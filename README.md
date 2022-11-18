@@ -22,3 +22,14 @@ or in deploy script:
 # How to add data to database:
 
 Use `test_tools/create_example_data.py` to push artifitial data to database.
+
+
+## Database example
+
+Connect to database with `psql`:
+```bash
+psql postgresql://postgres:newpassword@localhost:5432
+```
+
+Use also can use Beekeeper Studio to connect to database.
+
