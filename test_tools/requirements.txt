@@ -1,2 +1,2 @@
 sqlalchemy
-dotenv
+python-dotenv
