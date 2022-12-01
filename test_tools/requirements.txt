@@ -1,2 +1,3 @@
-sqlalchemy
-python-dotenv
+sqlalchemy # For working with database
+python-dotenv # For working with .env files
+pandas # For working with dataframes

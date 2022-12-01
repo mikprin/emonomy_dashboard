@@ -21,7 +21,7 @@ or in deploy script:
 
 # How to add data to database:
 
-Use `test_tools/create_example_data.py` to push artifitial data to database.
+
 
 
 ## Database example
@@ -33,3 +33,18 @@ psql postgresql://postgres:newpassword@localhost:5432
 
 Use also can use Beekeeper Studio to connect to database.
 
+
+# Test tools
+
+## Installation of sqlalchemy
+
+Sometimes sqlalchemy having issues. What worked for me:
+```bash
+sudo apt install libpq-dev
+sudo pip install psycopg2
+sudo pip install sqlalchemy
+```
+
+
+## Artiicial data: 
+Use `test_tools/create_example_data.py` to push artifitial data to database.
