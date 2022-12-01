@@ -17,11 +17,14 @@ def get_dataframes_from_csv_folder(pandases_dict , path_to_data , parent_folder 
     
     # Create result dict
     pandases = {}
+    
     # Don't forget to add check for the shema name occupied
     pandases["database_schema"] = pd.DataFrame()
     
     for file in os.listdir(path_to_data):
         full_path = os.path.join( path_to_data, file)
+        database_schema_dict = {}
+        
         if os.path.isfile(full_path):
             # Do stuff with files
             filename_no_extention = file.split('.')[0]
