@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.types import String, Integer, Float, Date, DateTime, Boolean
 from dotenv import load_dotenv
 
-def create_connection(user, password, host, port, db_name):
+def create_db_connection(user, password, host, port, db_name):
     os.environ["DB_HOST"] = "localhost"
     database_string = f"postgresql://{user}:{password}@{host}:{port}/{db_name}"
     engine = create_engine(database_string)
@@ -82,6 +82,6 @@ if __name__ == "__main__":
     db_port = os.getenv('DB_PORT')
     db_name = os.getenv('DB_NAME')
     
-    engine = create_connection(db_user, db_password, db_host, db_port, db_name)
+    engine = create_db_connection(db_user, db_password, db_host, db_port, db_name)
     
     push_data_to_postgres(data_path, engine)

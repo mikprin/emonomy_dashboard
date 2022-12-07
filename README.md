@@ -52,3 +52,8 @@ Use `test_tools/create_example_data.py` to push artifitial data to database.
 ## Add example data to empty postgres database
 
 There are 2 scripts that can help you with that. `push_data_to_postgres.ipynb` and `test_tools/push_data_to_postgres.py`. Fist one is used as an interactive demo and a second one can be used as external library for future use. Example data is located in `example_data/example_csv`. Make sure to change location when using script.
+
+
+
+# Data visualization algorithms
+

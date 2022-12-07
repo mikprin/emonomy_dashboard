@@ -1,23 +1,5 @@
 version: "3.9"
 services:
-
-  grafana:
-    image: grafana/grafana-oss
-    container_name: grafana
-    user: "${Userid}:${Groupid}"
-    restart: always
-    ports:
-      - 3000:3000
-    environment:
-      - GF_SECURITY_ADMIN_PASSWORD=yze3agr@BQV8uct-rzj
-      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource,marcusolsson-csv-datasource
-      - GF_PATHS_DATA=/var/lib/grafana
-    depends_on:
-      - postgres
-    volumes:
-      - ./grafana-volume:/home/grafana
-      - ./grafana-storage:/var/lib/grafana
-
   redis:
     container_name: redis_inst
     image: redis
