@@ -1,14 +1,15 @@
 
 
-# Deploy with docker compose
+# Deploy streamlit app with docker compose
 How to deploy with docker compose:
 ```bash
-mkdir -p grafana-storage grafana-volume
-Userid=${UID} Groupid=${GID} docker-compose up -d
+docker-compose up -d --build
 ```
+
 or in deploy script:
 `./deploy.sh`
 
+Enjoy results on `localhost:8501`
 ## Dependencies
 
 * [docker](https://docs.docker.com/install/)
@@ -17,7 +18,6 @@ or in deploy script:
 
 ## Configuration
 
-* [grafana](https://grafana.com/docs/grafana/latest/installation/configuration/)
 
 # How to add data to database:
 

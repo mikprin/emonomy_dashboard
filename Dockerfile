@@ -1,5 +1,10 @@
 FROM python:3.9-slim
 
+LABEL name="emonomy dashboard" \
+      version="1.0" \
+      maintainer="Mikhail Solovyanov <" \
+      description="This is the Dockerfile for emonomy dashboard Streamlit app"
+
 EXPOSE 8501
 
 WORKDIR /app
@@ -15,6 +20,10 @@ COPY streamlit_app /app
 
 COPY requirements.txt /app
 
+# Temp
+
+COPY example_data /example_data
+
 RUN pip3 install -r requirements.txt
 
-ENTRYPOINT ["streamlit", "run", "dashboard_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD ["streamlit", "run", "dashboard_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
