@@ -1,5 +1,10 @@
 version: "3.9"
 services:
+  dashboard_app:
+    build: .
+    ports:
+      - "8501:${APP_PORT}"
+
   redis:
     container_name: redis_inst
     image: redis
