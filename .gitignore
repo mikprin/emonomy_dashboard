@@ -1,6 +1,5 @@
 
 data
-grafana-storage
-grafana
 .vscode
 **/__pycache__
+streamlit_dashboard_venv

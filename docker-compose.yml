@@ -1,6 +1,7 @@
 version: "3.9"
 services:
   dashboard_app:
+    container_name: dashboard_app
     build: .
     ports:
       - "8501:${APP_PORT}"
