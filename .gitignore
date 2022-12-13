@@ -3,3 +3,4 @@ data
 grafana-storage
 grafana
 .vscode
+**/__pycache__
