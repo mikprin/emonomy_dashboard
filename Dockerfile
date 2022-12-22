@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/* &&\
     apt-get clean
 
-COPY streamlit_app /app
+COPY emonomy_dashboard/streamlit_app /app
 
 COPY requirements.txt /app
 
