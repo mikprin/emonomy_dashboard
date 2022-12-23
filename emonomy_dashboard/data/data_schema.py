@@ -1,34 +1,62 @@
 import pydantic
+from typing import Optional
 
 
+DATA_VERSION = '0.1.0'
 class TableDefinition(pydantic.BaseModel):
+    '''Definition for single table in schema'''
     table_name: str
     contents: str
     element_type: str
 
 class StatementIrtResult(pydantic.BaseModel):
-    stimulus: str
+    '''pydantic model for statement IrtResult table'''
+    video_id: int # Effectively a stimulus id
     message: str
     weight: float
     
-class EmotionsData(pydantic.BaseModel):
-    stimulus: str
+class EmotionsMetricsRow(pydantic.BaseModel):
+    '''One row of emotions metrics table'''
+    video_id: int
     metrics: str
     value: float
-
 class VideoDinamics(pydantic.BaseModel):
-    time: float
-    value: float
+    '''Table for dynamics of one video'''
+    Timestamp: list[int]
+    ANGRY: list[float]
+    CONFUSED: list[float]
+    SAD: list[float]
+    SURPRISED: list[float]
+    DISGUSTED: list[float]
+    FEAR: list[float]
+    HAPPY: list[float]
+    ENGAGEMENT: list[float]
+
+class VideoDynamicDominanits(pydantic.BaseModel):
+    """Table for dominant emotions of one video"""
+    Timestamp: list[float]
+    CALM: list[float]
+    ANGRY: list[float]
+    CONFUSED: list[float]
+    SAD: list[float]
+    SURPRISED: list[float]
+    DISGUSTED: list[float]
+    FEAR: list[float]
+    HAPPY: list[float]
 
 class Video(pydantic.BaseModel):
+    '''Tables collection for one video'''
+    video_id: int
     video_name: str
     video_file: str
-    dynamics: list
+    dynamics: VideoDinamics
+    dynamicsDominants: VideoDynamicDominanits
 
 class FastestExperimentData(pydantic.BaseModel):
-    version: str
+    '''Root pydantic model for fastest experiment data'''
+    version: str = DATA_VERSION
     client_id: str
-    schema: list[TableDefinition]
-    statement_irt_results: StatementIrtResult
-    emotions_data: EmotionsData
+    schema: Optional(list[TableDefinition]) # Optional schema
+    statement_irt_results: list[StatementIrtResult]
+    emotions_data: list[EmotionsMetricsRow]
     videos: list[Video]

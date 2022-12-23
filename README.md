@@ -12,6 +12,7 @@ or in deploy script:
 Enjoy results on `localhost:8501`
 ## Dependencies
 
+* Python 3.10+
 * [docker](https://docs.docker.com/install/)
 * [docker-compose](https://docs.docker.com/compose/install/)
 
