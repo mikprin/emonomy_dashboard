@@ -11,13 +11,13 @@ class TableDefinition(pydantic.BaseModel):
 
 class StatementIrtResult(pydantic.BaseModel):
     '''pydantic model for statement IrtResult table'''
-    video_id: int # Effectively a stimulus id
+    video_id: str # Effectively a stimulus id
     message: str
     weight: float
     
 class EmotionsMetricsRow(pydantic.BaseModel):
     '''One row of emotions metrics table'''
-    video_id: int
+    video_id: str
     metrics: str
     value: float
 class VideoDinamics(pydantic.BaseModel):
@@ -46,7 +46,7 @@ class VideoDynamicDominanits(pydantic.BaseModel):
 
 class Video(pydantic.BaseModel):
     '''Tables collection for one video'''
-    video_id: int
+    video_id: str
     video_name: str
     video_file: str
     dynamics: VideoDinamics
