@@ -56,7 +56,7 @@ class FastestExperimentData(pydantic.BaseModel):
     '''Root pydantic model for fastest experiment data'''
     version: str = DATA_VERSION
     client_id: str
-    schema: Optional(list[TableDefinition]) # Optional schema
+    # schema: Optional[list[TableDefinition]] # Optional schema
     statement_irt_results: list[StatementIrtResult]
     emotions_data: list[EmotionsMetricsRow]
     videos: list[Video]

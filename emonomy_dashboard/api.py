@@ -9,6 +9,9 @@ import os, sys
 import dashboard_cluster_control
 import dashboard_settings
 
+from data_tools.data_schema import FastestExperimentData
+
+# Initialize settings
 try:
     settings = dashboard_settings.DashboardSettings()
 except Exception as e:
@@ -27,6 +30,7 @@ def list_dashboards():
     return {"dashboards": dashboards}
 
 @app.post("/create_dashboard/{dashboard_name}")
+def create_dashboard(data: str):
     dashboards = dashboard_cluster_control.list_dashboards()
     if len(dashboards) < int(settings.config["General"]["max_workers"]):
         # Num of dashboards is less than max_workers creating a new one
