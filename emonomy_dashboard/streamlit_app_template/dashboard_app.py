@@ -13,11 +13,13 @@ from dotenv import load_dotenv
 pd.set_option("display.precision", 1)
 pd.set_option('display.max_columns', None)
 
-
-settings_dict = {
-    "dataframe_float_precision": 2, # Max float digits in dataframe
-}
-
+def import_settings():
+    '''Create settings dictionary from source file'''
+    settings_dict = {
+        "dataframe_float_precision": 2, # Max float digits in dataframe
+        "PATH_TO_DATA": "example_data/example_csv"
+    }
+    return settings_dict
 
 def prepare_tabular_metrics_data(raw_emotions_dataframe):
     videos = raw_emotions_dataframe['stimulus'].unique()
@@ -55,27 +57,17 @@ def prepare_irt_metrics_data(raw_irt_dataframe):
             new_dataframe.loc[video, metric] = value
     return new_dataframe
 
-path_to_data = os.path.join(os.path.dirname(
-    os.path.realpath(__file__)), "..", "example_data", "example_csv")
 
-# def create_db_connection(user, password, host, port, db_name):
-#     os.environ["DB_HOST"] = "localhost"
-#     database_string = f"postgresql://{user}:{password}@{host}:{port}/{db_name}"
-#     engine = create_engine(database_string)
-#     return engine
+
 
 # # Get script path
 script_path = os.path.realpath(__file__)
 script_dir = os.path.dirname(script_path)
-# env_folder = f"{script_dir}/../.env"
-# load_dotenv(env_folder)  # take environment variables from .env.
-# db_user = os.getenv('DB_USER')
-# db_password = os.getenv('DB_PASSWORD')
-# db_host = os.getenv('DB_HOST')
-# db_port = os.getenv('DB_PORT')
-# db_name = os.getenv('DB_NAME')
 
-# engine = create_db_connection(db_user, db_password, db_host, db_port, db_name)
+settings_dict = import_settings()
+
+
+path_to_data = settings_dict["PATH_TO_DATA"]
 
 # --- Load data ---
 
@@ -86,7 +78,6 @@ irt_metrics = prepare_irt_metrics_data(pd.read_csv(
     os.path.join(path_to_data, "statement_irt_result.csv"), index_col=0))
 
 # --- Page view ---
-
 
 page_name = "Emonomy dashboard"
 
