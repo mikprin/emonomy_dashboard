@@ -4,3 +4,4 @@ python-dotenv # For working with .env files
 pandas # For working with dataframes
 plotly # For creating interactive plots
 Pillow  # For working with images
+fastapi # For creating API
